@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../jquery-3.4.1.min.js"></script>
+    </head>
+    <body>
+        <h1>秒杀测试页面</h1>
+        <button onclick="es.close()">关闭</button>
+        <button onclick="order()">order</button>
+        剩余库存量
+        <div id="data">
+
+        </div>
+        <script>
+            var es = new EventSource("seckill/notify");
+            es.onmessage = function(event) {
+                document.getElementById("data").innerHTML =event.data + "<br/>";
+            }
+
+            es.addEventListener("disconnect", function(event) {
+                console.log("server ask close");
+                es.close();
+            });
+
+            function order() {
+                $.ajax(location.origin + "/seckill/order");
+            };
+        </script>
+    </body>
+</html>
