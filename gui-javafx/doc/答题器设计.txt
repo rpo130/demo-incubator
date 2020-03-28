@@ -1,0 +1,41 @@
+答题器
+
+功能：针对问答式的题目，使用电子化的方式做回答记录与管理，支持的题目类型为选择题和简答题
+
+设计：
+    题目实体
+        id
+        index 题目序号
+        title 题目类目
+        content 题目内容
+        type 题目类型
+        supplyAnswers 提供的选项
+        standardAnswer 标准答案
+
+    回答实体
+        id
+        题目id
+        type
+        answer
+        startTime
+        endTime
+
+    (排除题目的)回答实体 titleAnswerInfo
+        id
+        title， index
+        type
+        answer
+        rightAnswer
+        choice
+        rightChoice
+        startTime
+        endTime
+
+    当前文档实体
+        List<titleAnswerInfo>
+        loc
+        mode
+
+
+
+    
